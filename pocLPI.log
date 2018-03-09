@@ -1,0 +1,7 @@
+[main] DEBUG org.statefulj.fsm.FSM - StateManager FSM(StateManager)::En_Certif(GDR.RequeteUniCast)->En_Certif/noop
+[main] DEBUG org.statefulj.fsm.FSM - StateManager FSM(StateManager)::En_Certif(EAM.CRCertification)->Dem_Enregistree/atos.net.pocLPI.action.SCUniCastClassAction@7229724f
+[main] DEBUG org.statefulj.fsm.FSM - StateManager FSM(StateManager)::Dem_Enregistree(GDR.ExecuterDemande)->En_Execution/atos.net.pocLPI.action.SCUniCastClassAction@4c873330
+[main] DEBUG org.statefulj.fsm.FSM - StateManager FSM(StateManager)::En_Execution(DUMMY_EVENT)->En_Execution/noop
+[main] DEBUG org.statefulj.fsm.FSM - StateManager FSM(StateManager)::CR_Genere(IMM.RepReqSC)->CR_Genere/org.statefulj.fsm.model.impl.CompositeActionImpl@3b07d329
+[main] DEBUG org.statefulj.fsm.FSM - StateManager FSM(StateManager)::Vide(IMM.RepReqSC)->Vide/noop
+[main] DEBUG org.statefulj.fsm.FSM - StateManager FSM(StateManager)::Vide(AZERTY.QSD)->Vide/noop

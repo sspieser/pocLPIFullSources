@@ -1,0 +1,13 @@
+Type de BP;Etat d’entrée;Evènement / Transition;Action ;Etat sortie ou vide si non deterministe;Start/stop (1/2 - 0)
+SCUniCast;Vide;GDR.RequeteUniCast;Certifier();En_Certif;1
+SCUniCast;En_Certif;EAM.CRCertification;Enregistrer Demande();Dem_Enregistree;0
+SCUniCast;Dem_Enregistree;GDR.ExecuterDemande;TraiterRequeteSC();En_Execution;0
+SCUniCast;Dem_Enregistree;GDR.GenererCR (Rejet);TraiterCR();CR_Genere;0
+SCUniCast;En_Execution;IMM.RepReqSC;MajDonneesOP_EnregistrerReponse();Rep_Enregistree;0
+SCUniCast;En_Execution;GDR.GenererCR (SLA);TraiterCR();CR_Genere;0
+SCUniCast;Rep_Enregistree;GDR.GenererCR;TraiterCR();CR_Genere;0
+SCUniCast;CR_Genere;GDR.GenererCR (SLA);NoOp();CR_Genere;0
+SCUniCast;CR_Genere;IMM.RepReqSC;MajDonneesOP()#Evt()#NotifDSO();CR_Genere;0
+SCUniCast;En_Execution;DUMMY_EVENT;DUMMY_ACTION();;0
+SCMultiCast;Vide;DUMMY_EVENT;DUMMY_ACTION();En_Certif;1
+SCMultiCast;En_Certif;EAM.CRCertification;Enregistrer Demande();Vide;2
