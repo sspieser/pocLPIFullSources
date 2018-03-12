@@ -102,7 +102,7 @@ public class FSMManager {
 	public State<StateManager> sendEvent(String eventString) throws TooBusyException, FSMActionException, FSMUnexpectedEventException {
 		State<StateManager> state = null;
 		try {
-			state = sessionFSM.onEvent(sm, eventString);
+			state = this.sessionFSM.onEvent(sm, eventString);
 		} catch (ActionException a) {
 			throw new FSMActionException(a);
 		} catch (UnexpectedEventException e) {
@@ -219,12 +219,16 @@ public class FSMManager {
 						String param1 = action;
 						Action<StateManager> specificAction = FSMUtils.loadActionClass(classNm, param1);
 						
-						String nextStateString = ((BPGenericAction<StateManager>) specificAction).executeNonDeterministic(stateful, event, args);
-						next = mapStates.get(nextStateString);
-						
-						logger.debug(" **** Non deterministic: from getStateActionPair() customise... *****");
+						// Si utilisation de executeNonDeterministic():
+						//String nextStateString = ((BPGenericAction<StateManager>) specificAction).executeNonDeterministic(stateful, event, args);
+						//next = mapStates.get(nextStateString);
+						// sinon
+						// placer le next sur l'etat courant (il ne doit pas etre null...)
+						next = mapStates.get(stateful.getState());
+						// et c'est le execute() classique de l'action qui sera appellee...
+						logger.debug(" **** Non deterministic: etat 'next' == courant == '" + next.getName() + "' *****");
 
-						return new StateActionPairImpl<StateManager>(next, null /*specificAction*/);
+						return new StateActionPairImpl<StateManager>(next, specificAction);
 					}
 				});
 			}
