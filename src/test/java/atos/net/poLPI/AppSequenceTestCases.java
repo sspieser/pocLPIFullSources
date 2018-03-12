@@ -4,7 +4,6 @@ import org.statefulj.fsm.TooBusyException;
 
 import atos.net.pocLPI.utils.FSMManager;
 import atos.net.pocLPI.utils.exception.FSMException;
-import atos.net.pocLPI.utils.exception.FSMUnexpectedEventException;
 import junit.framework.TestCase;
 
 public class AppSequenceTestCases extends TestCase {
